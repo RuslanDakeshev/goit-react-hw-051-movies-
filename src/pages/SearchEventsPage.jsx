@@ -29,36 +29,23 @@ export const SearchEventsPage = () => {
   };
 
   return (
+
+    
     <>
+      
       <form onSubmit={handleSubmit}>
         <input type="text" name="query" />
         <button>Search</button>
       </form>
-      {movies && (
-              <>
-                  {/* <MoviesList movies={movies} /> */}
-          <ul>
-            {movies.map(({ title, id }) => (
-              <li key={id}>
-                <Link to={`${id}`} state={{ from: location }}>
-                  {title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Outlet />
-        </>
-      )}
-    </>
+      {movies && (<MoviesList movies={movies} />)}
+      <Outlet/>
+
+      </>
       
-    //   <>
-    //       {/* <form onSubmit={handleSubmit}>
-    //     <input type="text" name="query" />
-    //      <button>Search</button>
-    //   </form> */}
-    //       <SearchBox onSubmit={handleSubmit} />
-    //       <MoviesList movies={movies} />
-    //       {/* <Outlet /> */}
-    //   </>
-  );
+          
+      );
+  
+    
+  
+      
 };

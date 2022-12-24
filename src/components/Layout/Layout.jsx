@@ -7,7 +7,7 @@ export const Layout = () => {
         <>
             <header>{!location.pathname.includes('details') && <Navigation />}</header>
                 <main><Outlet/></main>
-            <footer>Footer</footer>
+            
         </>
     )
 }
