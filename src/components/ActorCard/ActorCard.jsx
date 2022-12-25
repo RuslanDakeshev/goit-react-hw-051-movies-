@@ -1,11 +1,13 @@
+import { List,Img,Name,Character, Item } from "./ActorCard.styled";
+
 export const ActorCard = ({ name, role, photo_path }) => {
   return (
-    <>
-      <div>
-        <img src={`https://image.tmdb.org/t/p/w500${photo_path}`} alt={name} />
-        <p>{name}</p>
-        <p>{role}</p>
-      </div>
-    </>
+    <List>
+      <Item>
+        <Img src={`https://image.tmdb.org/t/p/w500${photo_path}`} alt={name} />
+        <Name>{name}</Name>
+        <Character>{role}</Character>
+      </Item>
+    </List>
   );
 };

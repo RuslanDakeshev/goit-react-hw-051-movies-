@@ -1,10 +1,9 @@
 import { Routes, Route, Switch } from "react-router-dom";
 import { Layout } from "./Layout/Layout";
-import { HomePage } from "pages/HomePage";
-import { EventsPage } from "pages/EventsPage";
-import { EventSubPage } from "pages/EventSubPage";
-import { MoviePage } from "pages/MoviePage";
-import { SearchEventsPage } from "pages/SearchEventsPage";
+import { HomePage } from "pages/HomePage/HomePage";
+
+import { MoviePage } from "pages/MoviePage/MoviePage";
+import { SearchMoviesPage } from "pages/SearchMoviesPage/SearchMoviesPage";
 import { MovieCast } from "./MovieCast/MovieCast";
 import { MovieReviews } from "./MovieReviews/MovieReviews";
 
@@ -15,11 +14,12 @@ export const App = () => {
     <Routes>
       <Route path='/' element={<Layout/>}>
         <Route index element={<HomePage />} />
-        <Route path='movies' element={<SearchEventsPage />}/>
+        <Route path='movies' element={<SearchMoviesPage />}/>
         <Route path="movies/:movieId" element={<MoviePage />}>
           <Route path="cast" element={<MovieCast />} />
             <Route path="reviews" element={<MovieReviews />} />
-          </Route>
+        </Route>
+        <Route path="*" element={<HomePage />} />
       </Route>
     </Routes>
   )

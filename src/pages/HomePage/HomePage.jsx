@@ -11,7 +11,7 @@ export const HomePage = () => {
   return (
     movies && (
       <>
-        <div>20 Most Popular Movies Right Now</div>
+        <div>Popular Movies Today</div>
         <MoviesList movies={movies} />
       </>
     )

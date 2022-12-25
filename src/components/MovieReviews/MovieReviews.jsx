@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { fetchEventsByReviews } from 'services/eventsApi';
 import { useParams } from 'react-router-dom';
+import { List, Author, Text } from '../MovieReviews/MovieReviews.styled';
+
 
 export const MovieReviews = () => {
   const [reviews, setReviews] = useState(null);
@@ -15,24 +17,24 @@ export const MovieReviews = () => {
     }
 
   return (
-    <>
+    <List>
       {reviews.length === 0 ? (
-        <p>There are no reviews yet</p>
+        <Text>There are no reviews yet</Text>
       ) : (
         <ul>
           {reviews.map(review => {
             return (
               <li key={review.id}>
-                <div>
+                <Author>
                   Written by {review.author},{' '}
                   {review.created_at.substring(0, 10)}
-                </div>
-                <p>{review.content}</p>
+                </Author>
+                {review.content}
               </li>
             );
           })}
         </ul>
       )}
-    </>
+    </List>
   );
 };

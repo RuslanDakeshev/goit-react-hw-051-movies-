@@ -1,15 +1,16 @@
 import { fetchEventsByName } from 'services/eventsApi';
 import { useEffect, useState } from 'react';
-import { useSearchParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { useSearchParams,Outlet } from 'react-router-dom';
 import { MoviesList } from 'components/MoviesList/MoviesList';
-// import { SearchBox } from 'components/SearcBox/SearchBox';
+import { Form,Input,Button } from './SearchMoviesPage.styled';
 
-export const SearchEventsPage = () => {
+
+export const SearchMoviesPage = () => {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('moviename');
-  const location = useLocation();
+  
 
   useEffect(() => {
     if (query === null || query === '') return;
@@ -33,10 +34,21 @@ export const SearchEventsPage = () => {
     
     <>
       
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
+      <Input
+       name="query"
+        type="text"
+        autoComplete="off"
+        placeholder="Search for movies..."
+      />
+      <Button type="submit">Search</Button>
+    </Form>
+      
+      {/* <form onSubmit={handleSubmit}>
         <input type="text" name="query" />
         <button>Search</button>
-      </form>
+      </form> */}
+      
       {movies && (<MoviesList movies={movies} />)}
       <Outlet/>
 
